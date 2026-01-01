@@ -2,7 +2,12 @@
 export default {
 	async fetch(request: Request): Promise<Response> {
 		const cf = (request as any).cf;
+		const clientIp =
+			request.headers.get("cf-connecting-ip") ||
+			request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+			null;
 		const geolocationData = {
+			ip: clientIp,
 			colo: cf?.colo,
 			country: cf?.country,
 			city: cf?.city,
