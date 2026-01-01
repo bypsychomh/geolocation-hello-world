@@ -16,7 +16,7 @@ export default {
 			timezone: cf?.timezone,
 		};
 
-		console.log("All geolocation data:", JSON.stringify(geolocationData, null, 2));
+		console.log("All geolocation data:", JSON.stringify(cf, null, 2));
 
 		return new Response(JSON.stringify(geolocationData, null, 2), {
 			headers: {
